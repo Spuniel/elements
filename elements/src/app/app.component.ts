@@ -142,12 +142,16 @@ export class AppComponent {
     this.wypluj = "";
 
     for(let i = 0; i < this.text.length; i++) {
+
+      if(i < this.text.length){
+        if(this.tab[this.text[i].toUpperCase() + this.text[i + 1]]){
+          this.wypluj += this.text[i].toUpperCase() + this.text[i + 1].toLowerCase() + "  =>  "+ this.tab[this.text[i].toUpperCase() + this.text[i + 1].toLowerCase()] + "<br>";
+          continue;
+        }
+      }
+
       if (this.tab[this.text[i].toUpperCase()]) {
-        this.wypluj += this.text[i] + "  =>  "+ this.tab[this.text[i]] + " ";
-      } else if(i < this.text.length){
-        if(this.tab[this.text[i] + this.text[i + 1]]){
-          this.wypluj += this.text[i] + this.text[i + 1] + "  =>  "+ this.tab[this.text[i] + this.text[i + 1]] + " ";
-        } 
+        this.wypluj += this.text[i].toUpperCase() + "  =>  "+ this.tab[this.text[i].toUpperCase()] + "<br>";
       }
     }
   }

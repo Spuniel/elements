@@ -2,5 +2,5 @@
 <div>
   <h1>Wpisz tekst:</h1>
   <input (input)="start($event)" type="text">
-  <p>{{wypluj}}</p>
+  <p [innerHTML]="wypluj"></p>
 </div>
