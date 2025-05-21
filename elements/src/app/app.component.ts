@@ -5,13 +5,13 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-root',
   imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'elements';
-  
+
   tab: { [key: string]: string } = {};
-  
+
   constructor() {
     this.tab['H'] = 'Wodór (1)';
     this.tab['He'] = 'Hel (2)';
@@ -131,27 +131,37 @@ export class AppComponent {
     this.tab['Lv'] = 'Liwermor (116)';
     this.tab['Ts'] = 'Tenes (117)';
     this.tab['Og'] = 'Oganesson (118)';
-  };
-  
-  text: string = "";
-  wypluj: string = "";
-  
+  }
+
+  text: string = '';
+  wypluj: string = '';
+
   start(event: Event): void {
     const input = event.target as HTMLInputElement;
     this.text = input.value;
-    this.wypluj = "";
+    this.wypluj = '';
 
-    for(let i = 0; i < this.text.length; i++) {
-
-      if(i < this.text.length){
-        if(this.tab[this.text[i].toUpperCase() + this.text[i + 1]]){
-          this.wypluj += this.text[i].toUpperCase() + this.text[i + 1].toLowerCase() + "  =>  "+ this.tab[this.text[i].toUpperCase() + this.text[i + 1].toLowerCase()] + "<br>";
+    for (let i = 0; i < this.text.length; i++) {
+      if (i < this.text.length) {
+        if (this.tab[this.text[i].toUpperCase() + this.text[i + 1]]) {
+          this.wypluj +=
+            this.text[i].toUpperCase() +
+            this.text[i + 1].toLowerCase() +
+            '  =>  ' +
+            this.tab[
+              this.text[i].toUpperCase() + this.text[i + 1].toLowerCase()
+            ] +
+            '<br>';
           continue;
         }
       }
 
       if (this.tab[this.text[i].toUpperCase()]) {
-        this.wypluj += this.text[i].toUpperCase() + "  =>  "+ this.tab[this.text[i].toUpperCase()] + "<br>";
+        this.wypluj +=
+          this.text[i].toUpperCase() +
+          '  =>  ' +
+          this.tab[this.text[i].toUpperCase()] +
+          '<br>';
       }
     }
   }
